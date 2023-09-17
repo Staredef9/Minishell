@@ -1,12 +1,8 @@
 #include "minishell.h"
 
-
-
-
 void	core_loop()
 {
 	char *input;
-
 
 	while(1)
 	{
@@ -31,13 +27,13 @@ void	core_loop()
 				{
 					while(hist_state->entries[i])
 					{
-						printf("%d: %s\n", i + hist_state->offset, hist_state->entries[i]->line);
+						printf("%d: %s\n", i + hist_state->offset - 3, hist_state->entries[i]->line);
 						i++;
 					}
 				}
 			}
 			else 
-				printf("You entered: %s", input);
+				printf("You entered: %s\n", input);
 
 		}
 		free(input);
@@ -45,10 +41,7 @@ void	core_loop()
 
 }
 
-
-
-
-int main(int argc, char **argv, char **envp)
+int main()//int argc, char **argv, char **envp)
 {
 	using_history();
 	core_loop();

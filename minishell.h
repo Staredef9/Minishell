@@ -23,27 +23,28 @@
 #define	STRING 12
 #define 
 */
-/*
-enum	type
-{
-	NONE,
-	ARG,
-	FILE_IN,
-	HERE_DOC,
-	FILE_OUT,
-	FILE_OUT_SUR,
-	OPEN_FILE,
-	LIMITER,
-	EXIT_FILE,
-	EXIT_FILE_RET
-};
 
-*/
+typedef enum	
+{
+	TOKEN_END = 0,
+	TOKEN_SYMBOL,
+	CHAR_WHITESPACE = ' ',
+	CHAR_PIPE = '|',
+	CHAR_REDIR_OUT = '>',
+	CHAR_REDIR_IN = '<',
+	CHAR_DOLLARSIGN = '$',
+	CHAR_SING_QUOTE = '\'',
+	CHAR_DOUB_QUOTE = '"',
+
+} token_type;
+
+
 typedef struct s_token
 {
 	
-//	enum			type;
-	char			*content;
+	token_type		type;
+	char			*text;
+	size_t			text_len;
 	struct	s_token	*next;
 	//struct s_token *next;
 	//
@@ -53,13 +54,12 @@ typedef struct s_token
 //si forka per ogni comand line ottenuta dal parsing
 typedef	struct s_cmd_line
 {
-	char	*cmd;
-	t_token	*word;
-	char	**args;
+	char				*cmd;
+	t_token				*word;
+	char				**args;
 	struct	s_cmd_line	*next;
 } t_command_line;
-
-
+/*
 typedef struct	s_tokenizer
 {
 
@@ -67,7 +67,6 @@ typedef struct	s_tokenizer
 	
 
 } t_tokenizer;
-
 
 //PARSING:
 //
@@ -79,7 +78,6 @@ typedef struct	s_tokenizer
 //each token is given a struct 
 //all the tokens are inside a tokenizer struct that collects them in the right order
 //
-
 void	tokenize(const char *input, const	t_tokenizer *tokenizer)
 {
 	char	*str = strdup(input);
@@ -95,7 +93,7 @@ void	tokenize(const char *input, const	t_tokenizer *tokenizer)
 
 }
 
-
+*/
 //
 //lexer
 
