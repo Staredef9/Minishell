@@ -17,6 +17,17 @@ void	core_loop()
 		if (input[0] != '\0')
 		{
 			add_history(input);
+			char **splitted = ft_split(input, ' ' );
+			
+			int i = 0;
+			while (splitted[i])
+			{
+				printf("%s\n", splitted[i]);
+				free(splitted[i]);
+				i++;
+			}
+			free(splitted);
+
 
 			if(strcmp(input, "history") == 0)
 			{
@@ -41,8 +52,11 @@ void	core_loop()
 
 }
 
-int main()//int argc, char **argv, char **envp)
+int main(int argc, char **argv, char **envp)
 {
+	if(argc != 1)
+		return 2;
+	clean_init(argv, envp);
 	using_history();
 	core_loop();
 

@@ -36,7 +36,7 @@ typedef enum
 	CHAR_SING_QUOTE = '\'',
 	CHAR_DOUB_QUOTE = '"',
 	//CHAR_WORD = 
-	//CHAR_CMD = 
+
 } token_type;
 
 
@@ -46,18 +46,11 @@ typedef struct s_token
 	token_type		type;
 	char			*text;
 	size_t			text_len;
-	//struct	s_token	*next;
+	struct	s_token	*next;
 	//struct s_token *next;
 	//
 } t_token;
 
-
-
-typedef struct node
-{
-	t_token **tokens;
-	struct	node *next;
-} node;
 
 
 //ogni elemento parola e' un token che ha o un signifcato o no 
@@ -79,16 +72,6 @@ typedef	struct s_cmd_line
 	char				**args;
 	struct	s_cmd_line	*next;
 } t_command_line;
-
-
-
-
-t_token	*parse_line(char	*input);
-char	*ft_itoa(int i);
-char	*ft_strcpy(char *dest, char *copy);
-int		ft_strlen(char *str);
-void	clean_init(char **argv, char **envp);
-char	**ft_split(char *input, char separator);
 /*
 typedef struct	s_tokenizer
 {
