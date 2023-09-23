@@ -1,6 +1,6 @@
 CC = gcc
 
-CFLAGS = -c -Wall -Wextra -Werror
+CFLAGS = -g -c -Wall -Wextra -Werror
 
 all:prog
 	

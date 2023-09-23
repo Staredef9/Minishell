@@ -17,12 +17,12 @@ void	core_loop()
 		if (input[0] != '\0')
 		{
 			add_history(input);
+
 			char **splitted = ft_split(input, ' ' );
-			
 			int i = 0;
 			while (splitted[i])
 			{
-				printf("%s\n", splitted[i]);
+				//printf("%s\n", splitted[i]);
 				free(splitted[i]);
 				i++;
 			}

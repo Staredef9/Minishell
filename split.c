@@ -40,10 +40,10 @@ char **ft_split(char *input, char separator)
 	int	str_num;
 	char **to_return;
 
-	str_num = 0;
-	j = 0;
-	y = 0;
-	wordlen = 0;
+	str_num =	0;
+	j =			0;
+	y =			0;
+	wordlen =	0;
 	i = wdcount(input);
 	while (j < i)
 	{
@@ -58,12 +58,16 @@ char **ft_split(char *input, char separator)
 	}
 	j = 0;
 	to_return = malloc(sizeof(char*) * (str_num + 2));
-	to_return[str_num+2] = "\0";
-	
+	to_return[str_num + 1] = NULL;
 	while(j < i)
 	{
 		if(input[j] == separator)
 		{
+			if (y >= str_num)
+			{
+				printf("too many separators");
+				return NULL;
+			}
 			to_return[y] = malloc(sizeof(char) * (j - wordlen + 1));
 			ft_strlcpy(to_return[y], input, wordlen, j);
 			printf("%s\n", to_return[y]);
@@ -74,7 +78,8 @@ char **ft_split(char *input, char separator)
 	}
 	//y++;
 	to_return[y] = malloc(sizeof(char) * (i - wordlen + 1));
-	printf("%s\n", to_return[y]);
 	ft_strlcpy(to_return[y], input, wordlen, i);
+	if (!to_return[y+1])
+		printf("%s\n", to_return[y]);
 	return to_return;
 }
